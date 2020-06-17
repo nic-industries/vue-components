@@ -1,0 +1,16 @@
+{
+  "name": "@nic-industries/vue-components",
+  "version": "1.0.0",
+  "description": "A collection of Vue components",
+  "repository": "https://github.com/nic-industries/vue-components",
+  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
+  "keywords": ["vue", "components"],
+  "author": {
+    "name": "Sebastian Inman",
+    "email": "sebastian@nicindustries.com"
+  },
+  "dependencies": {
+    "vue-property-decorator": "^8.4.2"
+  },
+  "license": "ISC"
+}
