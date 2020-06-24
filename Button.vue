@@ -66,6 +66,7 @@
 
 <style lang="scss">
   .btn {
+    @include Transition((background-color, border-color, color));
     @include Convert\Pixel-Rem(padding-right, 20px);
     @include Convert\Pixel-Rem(padding-left, 20px);
     @include Convert\Pixel-Rem(font-size, 13px);
@@ -105,6 +106,7 @@
       @include Convert\Pixel-Rem(border-radius, 3px);
     }
     &[class*=border-] {
+      background-color: transparent;
       border-style: solid;
       border-width: 2px;
       &:hover,
