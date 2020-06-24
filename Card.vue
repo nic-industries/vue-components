@@ -1,5 +1,5 @@
 <template>
-  <div :class="`card ${!padding ? 'no-padding' : ''}`" @focusin="focusin" @click="click">
+  <div :class="classes" @focusin="focusin" @click="click">
     <slot></slot>
   </div>
 </template>
@@ -10,9 +10,20 @@
   @Component export default class Card extends Vue {
 
     @Prop({ default: true }) padding!: boolean;
+    @Prop({ default: true }) rounded!: boolean;
 
     @Emit() focusin($event: any) { return $event; }
     @Emit() click($event: any) { return $event; }
+
+    get classes() {
+
+      let classes = ['card'];
+
+      if(!this.padding) classes.push("no-padding");
+      if(!this.rounded) classes.push("no-radius");
+
+      return classes.join(' ');
+    }
 
   }
 
@@ -38,38 +49,11 @@
     &.no-padding {
       padding: 0;
     }
-    &-no-radius {
+    &.no-radius {
       border-radius: 0;
     }
-    &-no-shadow {
+    &.no-shadow {
       box-shadow: none;
-    }
-    &-title {
-      @include Convert\Pixel-Rem(border-top-right-radius, 4px);
-      @include Convert\Pixel-Rem(border-top-left-radius, 4px);
-      @include Convert\Pixel-Rem(margin-right, -24px);
-      @include Convert\Pixel-Rem(margin-left, -24px);
-      @include Convert\Pixel-Rem(margin-top, -24px);
-      @include Convert\Pixel-Rem(font-size, 16px);
-      @include Convert\Pixel-Rem(padding, 12px);
-      background-color: $Color\Cerakote\Gray;
-      color: $Color\Default\White;
-      text-align: center;
-      margin-bottom: 0;
-    }
-    &-image {
-      @include Convert\Pixel-Rem(border-top-right-radius, 4px);
-      @include Convert\Pixel-Rem(border-top-left-radius, 4px);
-      @include Convert\Pixel-Rem(margin-bottom, 16px);
-      @include Convert\Pixel-Rem(margin-right, -24px);
-      @include Convert\Pixel-Rem(margin-left, -24px);
-      @include Convert\Pixel-Rem(margin-top, -24px);
-      max-width: calc(100% + 48px);
-      min-width: calc(100% + 48px);
-      width: calc(100% + 48px);
-      > img {
-        width: 100%;
-      }
     }
   }
 </style>

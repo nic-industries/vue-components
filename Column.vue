@@ -1,5 +1,5 @@
 <template>
-  <div :class="`col ${classes}`">
+  <div :class="classes">
     <slot></slot>
   </div>
 </template>
@@ -8,14 +8,19 @@
   import {Component, Prop, Vue} from "vue-property-decorator";
 
   @Component export default class Column extends Vue {
+
     @Prop() sizes!: any;
+
     get classes() {
-      let output = "";
-      if(this.sizes) {
-        Object.keys(this.sizes).map(k => output += `${k}:col-${this.sizes[k]} `);
-      }
-      return output;
+
+      let classes = ['col'];
+
+      if(this.sizes) Object.keys(this.sizes).map(size => classes.push(`${size}:col-${this.sizes[size]}`));
+
+      return classes.join(' ');
+
     }
+
   }
 </script>
 
