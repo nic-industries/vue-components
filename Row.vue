@@ -7,8 +7,8 @@
 <script lang="ts">
   import {Component, Prop, Vue} from "vue-property-decorator";
   @Component export default class Row extends Vue {
-    @Prop({default: "flex-start"}) justify!: string;
-    @Prop({default: "initial"}) align!: string;
+    @Prop({ default: "flex-start" }) justify!: string;
+    @Prop({ default: "initial" }) align!: string;
   }
 </script>
 

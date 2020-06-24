@@ -6,16 +6,16 @@
   import {Component, Prop, Vue} from "vue-property-decorator";
   @Component export default class Icon extends Vue {
 
-    @Prop({default: 'fa'}) family!: string;
-    @Prop({default: 'currentColor'}) color!: string;
-    @Prop({default: 4}) scale!: number;
+    @Prop({ default: "fa" }) family!: string;
+    @Prop({ default: false }) color!: string;
+    @Prop({ default: 4 }) scale!: number;
 
     get classes() {
 
       let classes = [this.family, `fa-${this.icon}`];
 
       if(this.scale) classes.push(`font-size-${this.scale}`);
-      if(this.color !== 'currentColor') classes.push(`color-${this.color}`);
+      if(this.color) classes.push(`color-${this.color}`);
 
       return classes.join(' ');
     }

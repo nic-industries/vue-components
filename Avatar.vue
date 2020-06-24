@@ -6,8 +6,8 @@
   import {Component, Prop, Vue} from "vue-property-decorator";
   @Component export default class Avatar extends Vue {
 
-    @Prop({default: 'primary'}) color!: string;
-    @Prop({default: true}) rounded!: boolean;
+    @Prop({ default: "primary" }) color!: string;
+    @Prop({ default: true }) rounded!: boolean;
 
     @Prop() image!: string;
     @Prop() text!: string;
@@ -16,9 +16,9 @@
 
     get classes() {
 
-      let classes = ['avatar', 'display-flex', 'justify-center', 'items-center'];
+      let classes = ["avatar", "display-flex", "justify-center", "items-center"];
 
-      if(this.rounded) classes.push('rounded');
+      if(this.rounded) classes.push("rounded");
       if(this.color) classes.push(`bg-${this.color}`);
 
       return classes.join(' ');
