@@ -34,8 +34,8 @@
     @include Convert\Pixel-Rem(margin-bottom, 16px);
     @include Convert\Pixel-Rem(border-radius, 3px);
     @include Convert\Pixel-Rem(padding, 24px);
-    box-shadow: 0 3px 6px -3px rgba($Color\Default\Black, 0.3);
-    background-color: $Color\Default\White;
+    box-shadow: 0 3px 6px -3px rgba(black, 0.3);
+    background-color: white;
     flex-direction: column;
     position: relative;
     overflow: hidden;
