@@ -22,7 +22,7 @@
       if(!this.padding) classes.push("no-padding");
       if(!this.rounded) classes.push("no-radius");
 
-      return classes.join(' ');
+      return classes.join(" ");
     }
 
   }

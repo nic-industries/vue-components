@@ -8,11 +8,10 @@
 
     @Prop({ default: "primary" }) color!: string;
     @Prop({ default: true }) rounded!: boolean;
+    @Prop({ default: 36 }) size!: number;
 
     @Prop() image!: string;
     @Prop() text!: string;
-
-    @Prop({default: 36}) size!: number;
 
     get classes() {
 

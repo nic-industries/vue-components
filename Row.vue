@@ -1,15 +1,30 @@
 <template>
-  <div :class="`row justify-${justify} align-${align}`">
+  <div :class="classes">
     <slot></slot>
   </div>
 </template>
 
 <script lang="ts">
   import {Component, Prop, Vue} from "vue-property-decorator";
+
   @Component export default class Row extends Vue {
+
     @Prop({ default: "flex-start" }) justify!: string;
     @Prop({ default: "initial" }) align!: string;
+
+    get classes() {
+
+      let classes = ["row"];
+
+      if(this.justify) classes.push(`justify-${this.justify}`);
+      if(this.align) classes.push(`align-${this.align}`);
+
+      return classes.join(" ");
+
+    }
+
   }
+
 </script>
 
 <style lang="scss">

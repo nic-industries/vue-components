@@ -18,7 +18,6 @@
       if(this.sizes) Object.keys(this.sizes).map(size => classes.push(`${size}:col-${this.sizes[size]}`));
 
       return classes.join(' ');
-
     }
 
   }
