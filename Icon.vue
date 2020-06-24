@@ -12,7 +12,7 @@
 
     get classes() {
 
-      let classes = [this.family, `fa-${this.icon}`];
+      let classes = ["icon", this.family, `fa-${this.icon}`];
 
       if(this.scale) classes.push(`font-size-${this.scale}`);
       if(this.color) classes.push(`color-${this.color}`);
