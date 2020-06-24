@@ -1,6 +1,6 @@
 {
   "name": "@nic-industries/vue-components",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A collection of Vue components",
   "repository": "git://github.com/nic-industries/vue-components.git",
   "publishConfig": { "registry": "https://npm.pkg.github.com/" },
