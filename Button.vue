@@ -46,6 +46,7 @@
 
     // Flag component properties.
     @Prop({ default: false }) loadingText!: string;
+    @Prop({ default: false }) fullWidth!: boolean;
     @Prop({ default: false }) disabled!: boolean;
     @Prop({ default: false }) loading!:  boolean;
     @Prop({ default: false }) rounded!:  boolean;
@@ -77,6 +78,7 @@
 
       let classes = ["btn", "text-500", "text-uppercase", "display-inline-flex", "justify-center", "items-center"];
 
+      if(this.fullWidth) classes.push('w-full');
       if(this.design) classes.push(`btn-style-${this.design}`);
       if(this.size) classes.push(`btn-size-${this.size}`);
       if(this.rounded) classes.push("btn-rounded");
