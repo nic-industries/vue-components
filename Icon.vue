@@ -32,7 +32,8 @@
 
     get icon() {
 
-      return this.$slots['default'][0].text;
+      let slots: any = this.$slots;
+      return slots ? `fa-${slots['default'][0].text}` : '';
 
     }
 
@@ -45,7 +46,7 @@
 
     get classes() {
 
-      let classes = ["icon", this.family, `fa-${this.icon}`];
+      let classes = ["icon", this.family, this.icon];
 
       if(this.scale) classes.push(`font-size-${this.scale}`);
       if(this.color) classes.push(`color-${this.color}`);
