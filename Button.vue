@@ -7,7 +7,7 @@
     </a>
   </router-link>
 
-  <button v-else :class="classes" :style="styles" @click="click">
+  <button v-else :class="classes" :style="styles" :type="type" @click="click">
     <Icon v-if="icon">{{icon}}</Icon>
     <slot></slot>
   </button>
@@ -15,22 +15,48 @@
 </template>
 
 <script lang="ts">
+
   import {Component, Prop, Emit, Vue} from "vue-property-decorator";
+
   @Component({
     components: {
       Icon: () => import("@nic-industries/vue-components/Icon.vue")
     }
-  }) export default class Button extends Vue {
+  })
 
+  /**
+   * @class Button
+   * @description Vue component for displaying a button element.
+   * @property icon The name of the {@link Icon} to display.
+   * @example <Button>Click Me</Button>
+   */
+
+  export default class Button extends Vue {
+
+    // Value component properties.
     @Prop({ default: "primary" }) color!: string;
-    @Prop( { default: "default" }) size!: "default"|"medium"|"small"|"mini";
+    @Prop({ default: "default" }) size!: "default"|"medium"|"small"|"mini";
+    @Prop({ default: "button" })  type!: "button"|"submit"|"reset";
 
+    // Flag component properties.
     @Prop({ default: false }) disabled!: boolean;
     @Prop({ default: false }) loading!: boolean;
     @Prop({ default: false }) rounded!: boolean;
     @Prop({ default: false }) borders!: boolean;
     @Prop({ default: false }) link!: string;
     @Prop({ default: false }) icon!: string;
+
+
+    @Emit() blur($event:  any) { return $event; }
+    @Emit() focus($event: any) { return $event; }
+    @Emit() click($event: any) { return $event; }
+
+
+    /**
+     * @method classes
+     * @description Generates a string of all applicable component classes.
+     * @returns string
+     */
 
     get classes() {
 
@@ -46,6 +72,13 @@
 
     }
 
+
+    /**
+     * @method styles
+     * @description Generates a string of all applicable component styles.
+     * @returns string
+     */
+
     get styles() {
 
       let styles = [];
@@ -56,10 +89,6 @@
       return styles.join(" ");
 
     }
-
-    @Emit() blur($event:  any) { return $event; }
-    @Emit() focus($event: any) { return $event; }
-    @Emit() click($event: any) { return $event; }
 
   }
 </script>

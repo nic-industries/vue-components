@@ -5,7 +5,16 @@
 </template>
 
 <script lang="ts">
+
   import {Component, Emit, Prop, Vue} from "vue-property-decorator";
+
+  /**
+   * @class Card
+   * @description Vue component for displaying a card element.
+   * @property padding <boolean> Flag for adding padding to the card.
+   * @property rounded <boolean> Flag for adding rounded corners to the card.
+   * @example <Card></Card>
+   */
 
   @Component export default class Card extends Vue {
 
@@ -14,6 +23,13 @@
 
     @Emit() focusin($event: any) { return $event; }
     @Emit() click($event: any) { return $event; }
+
+
+    /**
+     * @method classes
+     * @description Generates a string of all applicable component classes.
+     * @returns string
+     */
 
     get classes() {
 

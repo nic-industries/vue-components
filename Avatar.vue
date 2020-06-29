@@ -3,7 +3,17 @@
 </template>
 
 <script lang="ts">
+
   import {Component, Prop, Vue} from "vue-property-decorator";
+
+
+  /**
+   * @class Avatar
+   * @description Vue component for displaying a users avatar.
+   * @property icon The name of the {@link Icon} to display.
+   * @example <Button>Click Me</Button>
+   */
+
   @Component export default class Avatar extends Vue {
 
     @Prop({ default: "primary" }) color!: string;
@@ -12,6 +22,13 @@
 
     @Prop() image!: string;
     @Prop() text!: string;
+
+
+    /**
+     * @method classes
+     * @description Generates a string of all applicable component classes.
+     * @returns string
+     */
 
     get classes() {
 
@@ -22,6 +39,13 @@
 
       return classes.join(' ');
     }
+
+
+    /**
+     * @method styles
+     * @description Generates a string of all applicable component styles.
+     * @returns string
+     */
 
     get styles() {
 
