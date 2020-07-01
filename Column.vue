@@ -10,12 +10,20 @@
   @Component export default class Column extends Vue {
 
     @Prop() sizes!: any;
+    @Prop({ default: true  }) padding!: boolean;
+    @Prop({ default: false }) auto!: boolean;
+    @Prop({ default: false }) grow!: boolean;
 
     get classes() {
 
       let classes = ['col'];
 
       if(this.sizes) Object.keys(this.sizes).map(size => classes.push(`${size}:col-${this.sizes[size]}`));
+
+      if(!this.padding) classes.push('no-padding');
+      if(this.auto) classes.push('col-auto');
+      if(this.grow) classes.push('col-grow');
+
 
       return classes.join(' ');
     }
@@ -35,64 +43,46 @@
     }
   }
 
-  .col-auto,
-  .xs\:col-auto {
-    flex: 1 0 auto;
-    width: auto;
-  }
+  @mixin Columns($prefix: '') {
 
-  .col-1\/1,
-  .col-full,
-  .xs\:col-1\/1,
-  .xs\:col-full {
-    flex: 0 1 100%;
-    width: 100%;
-  }
+    .#{$prefix}col-auto {
+      flex: 1 0 auto;
+      width: auto;
+    }
 
-  @for $i from 1 through $Grid\MaxColumns {
+    .#{$prefix}col-grow {
+      flex: 1;
+    }
 
-    @for $j from 1 through $Grid\MaxColumns {
+    .#{$prefix}col-1\/1,
+    .#{$prefix}col-full {
+      flex: 0 1 100%;
+      width: 100%;
+    }
 
-      @if $j > $i {
+    @for $i from 1 through $Grid\MaxColumns {
 
-        .col-#{$i}\/#{$j},
-        .xs\:col-#{$i}\/#{$j} {
-          flex: 0 1 #{($i / $j) * 100%};
-          width: #{($i / $j) * 100%};
-        }
+      @for $j from 1 through $Grid\MaxColumns {
 
-        @include Viewport\Min($Viewport\SM) {
-          .sm\:col-#{$i}\/#{$j} {
+        @if $j > $i {
+
+          .#{$prefix}col-#{$i}\/#{$j} {
             flex: 0 1 #{($i / $j) * 100%};
             width: #{($i / $j) * 100%};
           }
-        }
 
-        @include Viewport\Min($Viewport\MD) {
-          .md\:col-#{$i}\/#{$j} {
-            flex: 0 1 #{($i / $j) * 100%};
-            width: #{($i / $j) * 100%};
-          }
-        }
-
-        @include Viewport\Min($Viewport\LG) {
-          .lg\:col-#{$i}\/#{$j} {
-            flex: 0 1 #{($i / $j) * 100%};
-            width: #{($i / $j) * 100%};
-          }
-        }
-
-        @include Viewport\Min($Viewport\XL) {
-          .xl\:col-#{$i}\/#{$j} {
-            flex: 0 1 #{($i / $j) * 100%};
-            width: #{($i / $j) * 100%};
-          }
         }
 
       }
 
     }
 
+  }
+
+  @include Columns();
+
+  @each $prefix, $breakpoint in $prefixes {
+    @include Viewport\Min($breakpoint) { @include Columns($prefix); }
   }
 
 </style>
