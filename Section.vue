@@ -1,7 +1,7 @@
 <template>
   <section class="section">
     <div class="section-content">
-      <div v-if="title" class="section-title flex flex-row items-flex-end mb-4">
+      <div v-if="title" class="section-title flex flex-row justify-space-between items-flex-end mb-4">
         <h2 class="mb-0">{{title}}</h2>
         <a v-if="link" :href="link">{{linkText}}</a>
       </div>
@@ -12,11 +12,15 @@
 
 
 <script lang="ts">
+
   import {Component, Prop, Vue} from "vue-property-decorator";
+
   @Component export default class Section extends Vue {
+
     @Prop() title!: string;
     @Prop() link!: string;
     @Prop() linkText!: string;
+
   }
 </script>
 
