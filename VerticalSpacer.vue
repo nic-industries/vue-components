@@ -20,7 +20,7 @@
 
     get classes() {
 
-      let classes = ['display-flex', 'mt-0', `mb-${this.height}`];
+      let classes = ['vertical-spacer', 'display-flex', 'mt-0', `mb-${this.height}`];
       return classes.join(" ");
 
     }
@@ -28,3 +28,11 @@
   }
 
 </script>
+
+
+<style lang="scss">
+  .vertical-spacer {
+    background: none;
+    border: none;
+  }
+</style>
