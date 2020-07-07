@@ -63,7 +63,7 @@
     get text() {
 
       let slots: any = this.$slots;
-      return this.loadingText && this.loading ? this.loadingText : slots['default'][0].text;
+      return this.loadingText && this.loading ? this.loadingText : ('default' in slots ? slots['default'][0].text : "");
 
     }
 
@@ -76,7 +76,7 @@
 
     get classes() {
 
-      let classes = ["btn", "text-500", "text-uppercase", "display-inline-flex", "justify-center", "items-center"];
+      let classes = ["btn", "text-600", "text-uppercase", "display-inline-flex", "justify-center", "items-center"];
 
       if(this.fullWidth) classes.push('w-full');
       if(this.design) classes.push(`btn-style-${this.design}`);
@@ -115,22 +115,29 @@
 <style lang="scss">
   .btn {
     @include Transition((background-color, border-color, color));
+    @include Convert\Pixel-Rem(letter-spacing, .5px);
     touch-action: manipulation;
     -webkit-appearance: button;
     -moz-appearance: button;
-    background: none;
+    white-space: nowrap;
+    width: max-content;
     user-select: none;
+    background: none;
     border-width: 0;
     cursor: pointer;
+    z-index: 1;
+    padding: 0;
 
-    &:not(.btn-style-none) {
+    &:hover,
+    &:focus-within {
+      color: var(--button-color);
+    }
+
+    &-size-default {
       @include Convert\Pixel-Rem(padding-right, 20px);
       @include Convert\Pixel-Rem(padding-left, 20px);
       @include Convert\Pixel-Rem(font-size, 13px);
       @include Convert\Pixel-Rem(height, 46px);
-      white-space: nowrap;
-      width: max-content;
-      z-index: 1;
     }
 
     &-size-medium {
@@ -164,6 +171,7 @@
       &:hover,
       &:focus-within {
         background-color: var(--button-hover-color);
+        color: var(--button-text-color);
       }
     }
 
@@ -180,6 +188,12 @@
 
     &-style-link {
       color: currentColor;
+      padding-right: 0;
+      padding-left: 0;
+      &:hover,
+      &:focus-within {
+        color: var(--button-color);
+      }
     }
 
     .icon {
