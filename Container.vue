@@ -15,5 +15,9 @@
     margin-right: auto;
     margin-left: auto;
     width: 100%;
+    @include Viewport\Min($Viewport\MD) {
+      @include Convert\Pixel-Rem(padding-right, $Container\Padding);
+      @include Convert\Pixel-Rem(padding-left, $Container\Padding);
+    }
   }
 </style>
