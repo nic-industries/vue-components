@@ -50,7 +50,7 @@
     @include Convert\Pixel-Rem(margin-bottom, 16px);
     @include Convert\Pixel-Rem(border-radius, 3px);
     @include Convert\Pixel-Rem(padding, 24px);
-    box-shadow: 0 3px 6px -3px rgba(black, 0.3);
+    border: 1px solid var(--color-light-gray-600);
     background-color: white;
     flex-direction: column;
     position: relative;
