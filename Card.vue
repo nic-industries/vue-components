@@ -50,8 +50,8 @@
     @include Convert\Pixel-Rem(margin-bottom, 16px);
     @include Convert\Pixel-Rem(border-radius, 3px);
     @include Convert\Pixel-Rem(padding, 24px);
-    border: 1px solid var(--color-light-gray-600);
-    background-color: white;
+    border: 1px solid var(--theme-card-borders, var(--color-light-gray-600));
+    background-color: var(--theme-card-background, var(--color-white));
     flex-direction: column;
     position: relative;
     overflow: hidden;
@@ -59,17 +59,22 @@
     height: auto;
     width: 100%;
     flex: 1;
+
     &[for] {
       cursor: pointer;
     }
+
     &.no-padding {
       padding: 0;
     }
+
     &.no-radius {
       border-radius: 0;
     }
+
     &.no-shadow {
       box-shadow: none;
     }
+
   }
 </style>
