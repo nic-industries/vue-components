@@ -168,32 +168,38 @@
     &-style-solid {
       background-color: var(--button-color);
       color: var(--button-text-color);
+
       &:hover,
       &:focus-within {
         background-color: var(--button-hover-color);
         color: var(--button-text-color);
       }
+
     }
 
     &-style-outline {
       border: 2px solid var(--button-color);
       background-color: transparent;
       color: var(--button-color);
+
       &:hover,
       &:focus-within {
         background-color: var(--button-color);
         color: var(--button-text-color);
       }
+
     }
 
     &-style-link {
       color: currentColor;
       padding-right: 0;
       padding-left: 0;
+
       &:hover,
       &:focus-within {
         color: var(--button-color);
       }
+
     }
 
     .icon {
